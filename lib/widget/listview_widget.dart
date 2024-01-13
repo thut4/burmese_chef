@@ -94,10 +94,13 @@ buildListView(HomeController controller, BuildContext context) {
                     onTap: () => Get.to(() => DetailScreen(data: data)),
                     child: Obx(
                       () => Container(
-                        margin: EdgeInsets.only(left: DimensionManager.width10),
+                        margin: EdgeInsets.only(
+                          left: DimensionManager.width10,
+                          bottom: DimensionManager.height10 - 5,
+                        ),
                         alignment: Alignment.bottomLeft,
                         height: DimensionManager.height45,
-                        width: DimensionManager.screenWidth * 0.3,
+                        width: DimensionManager.screenWidth * 0.4,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
                                 DimensionManager.radius10),
@@ -116,6 +119,7 @@ buildListView(HomeController controller, BuildContext context) {
                             child: SmallText(
                           text: 'ချက်နည်းကြည့်ရန်',
                           fontWeight: FontWeight.w600,
+                          fontSize: DimensionManager.font14,
                         )),
                       ),
                     ),

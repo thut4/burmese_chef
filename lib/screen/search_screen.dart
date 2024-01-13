@@ -3,7 +3,9 @@ import 'package:burmese_meal/controller/home_controller.dart';
 import 'package:burmese_meal/screen/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
+import '../constant/app_color.dart';
 import '../widget/text_widget.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -14,7 +16,10 @@ class SearchScreen extends StatelessWidget {
     final HomeController controller = Get.find<HomeController>();
     return Scaffold(
         appBar: AppBar(
-          title: BigText(text: 'Search...'),
+          title: BigText(
+            text: 'Search...',
+            fontSize: DimensionManager.font16,
+          ),
           elevation: 0,
           centerTitle: true,
         ),
@@ -47,8 +52,15 @@ class SearchScreen extends StatelessWidget {
                                 DimensionManager.radius10))),
                   )),
               Obx(() => controller.filteredFoods.isEmpty
-                  ? const Center(
-                      child: CircularProgressIndicator(),
+                  ? Center(
+                      child: LoadingAnimationWidget.discreteCircle(
+                        color: AppColor.redColor,
+                        secondRingColor: AppColor.lightBlue,
+                        thirdRingColor: controller.isDarkMode.value
+                            ? AppColor.whiteColor
+                            : AppColor.darkGrey,
+                        size: DimensionManager.height45,
+                      ),
                     )
                   : SizedBox(
                       height: 650,
