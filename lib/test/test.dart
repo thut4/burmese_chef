@@ -1,83 +1,68 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-enum ViewType { ListView, GridView }
-
-class ViewController extends GetxController {
-  var viewType = ViewType.ListView.obs;
-
-  void toggleView() {
-    viewType.value = (viewType.value == ViewType.ListView)
-        ? ViewType.GridView
-        : ViewType.ListView;
-  }
-}
-
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHomePage(),
+    return GetMaterialApp(
+      home: HomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final ViewController controller = Get.put(ViewController());
-
-  MyHomePage({super.key});
-
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ListView/GridView Example'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.view_module),
-            onPressed: () => controller.toggleView(),
+        title: Text('My App'),
+      ),
+      drawer: AppDrawer(), // Add the drawer here
+      body: Center(
+        child: Text('Home Screen'),
+      ),
+    );
+  }
+}
+
+class AppDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: Text(
+              'App Drawer',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
           ),
+          ListTile(
+            title: Text('Option 1'),
+            onTap: () {
+              // Handle option 1 tap
+              Get.to(() => HomeScreen());
+            },
+          ),
+          ListTile(
+            title: Text('Option 2'),
+            onTap: () {
+              // Handle option 2 tap
+              Navigator.pop(context); // Close the drawer
+            },
+          ),
+          // Add more list tiles for additional options
         ],
-      ),
-      body: Obx(
-        () {
-          return (controller.viewType.value == ViewType.ListView)
-              ? _buildListView()
-              : _buildGridView();
-        },
-      ),
-    );
-  }
-
-  Widget _buildListView() {
-    // Replace this with your ListView implementation
-    return ListView.builder(
-      itemCount: 20,
-      itemBuilder: (context, index) => ListTile(
-        title: Text('Item $index'),
-      ),
-    );
-  }
-
-  Widget _buildGridView() {
-    // Replace this with your GridView implementation
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 8.0,
-        mainAxisSpacing: 8.0,
-      ),
-      itemCount: 20,
-      itemBuilder: (context, index) => Card(
-        child: Center(
-          child: Text('Item $index'),
-        ),
       ),
     );
   }

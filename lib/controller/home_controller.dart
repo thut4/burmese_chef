@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../model/data_model.dart';
-import '../screen/home_screen.dart';
+import '../screen/home/home_screen.dart';
 
 enum ViewType { ListView, GridView }
 

@@ -5,7 +5,8 @@ import 'package:burmese_meal/widget/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controller/home_controller.dart';
+import '../../controller/home_controller.dart';
+
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key, required this.data});

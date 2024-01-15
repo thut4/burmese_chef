@@ -22,47 +22,57 @@ class SplashScreen extends StatelessWidget {
           //   text: 'Burmese Chef',
           //   fontSize: DimensionManager.font18,
           // ),
-          RichText(
-            text: TextSpan(
-              text: 'Welcome to ',
-              style: TextStyle(
-                fontSize: DimensionManager.font16,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'poppins',
-                color: controller.isDarkMode.value
-                    ? AppColor.lightBlue
-                    : AppColor.darkBlue,
+          Obx(
+            () => RichText(
+              text: TextSpan(
+                text: 'Welcome to ',
+                style: TextStyle(
+                  fontSize: DimensionManager.font16,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'poppins',
+                  color: controller.isDarkMode.value
+                      ? AppColor.lightBlue
+                      : AppColor.darkBlue,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                    text: 'Burmese ',
+                    style: TextStyle(
+                        fontSize: DimensionManager.font18,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'poppins',
+                        color: controller.isDarkMode.value
+                            ? AppColor.redColor
+                            : AppColor.lightBlue),
+                  ),
+                  TextSpan(
+                    text: 'Chef ',
+                    style: TextStyle(
+                        fontSize: DimensionManager.font16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'poppins',
+                        color: controller.isDarkMode.value
+                            ? AppColor.whiteColor
+                            : AppColor.blackColor),
+                  ),
+                ],
               ),
-              children: <TextSpan>[
-                TextSpan(
-                  text: 'Burmese ',
-                  style: TextStyle(
-                      fontSize: DimensionManager.font18,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'poppins',
-                      color: AppColor.redColor),
-                ),
-                TextSpan(
-                  text: 'Chef ',
-                  style: TextStyle(
-                      fontSize: DimensionManager.font16,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'poppins',
-                      color: controller.isDarkMode.value
-                          ? AppColor.whiteColor
-                          : AppColor.blackColor),
-                ),
-              ],
             ),
           ),
           SizedBox(
             height: DimensionManager.height20,
           ),
-          Center(
-            child: LoadingAnimationWidget.twistingDots(
-              leftDotColor: AppColor.redColor,
-              rightDotColor: AppColor.darkBlue,
-              size: DimensionManager.height110,
+          Obx(
+            () => Center(
+              child: LoadingAnimationWidget.twistingDots(
+                leftDotColor: controller.isDarkMode.value
+                    ? AppColor.darkColor
+                    : AppColor.redColor,
+                rightDotColor: controller.isDarkMode.value
+                    ? AppColor.whiteColor
+                    : AppColor.darkBlue,
+                size: DimensionManager.height110,
+              ),
             ),
           )
         ],

@@ -3,8 +3,9 @@ import 'package:burmese_meal/controller/home_controller.dart';
 import 'package:burmese_meal/widget/text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../utlis/utlits.dart';
-import '../widget/listview_widget.dart';
+import '../../utlis/utlits.dart';
+import '../../widget/app_drawer.dart';
+import '../../widget/listview_widget.dart';
 import 'search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -27,18 +28,26 @@ class HomeScreen extends StatelessWidget {
               text: 'Burmese Chef',
               fontSize: DimensionManager.font16,
             ),
+            leading: Builder(
+              builder: (context) => IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
+            ),
             actions: [
-              Obx(() => IconButton(
-                  onPressed: controller.toggleDarkMode,
-                  icon: controller.isDarkMode.value
-                      ? Icon(
-                          Icons.dark_mode,
-                          size: DimensionManager.icon24,
-                        )
-                      : Icon(
-                          Icons.light_mode,
-                          size: DimensionManager.icon24,
-                        ))),
+              // Obx(() => IconButton(
+              //     onPressed: controller.toggleDarkMode,
+              //     icon: controller.isDarkMode.value
+              //         ? Icon(
+              //             Icons.dark_mode,
+              //             size: DimensionManager.icon24,
+              //           )
+              //         : Icon(
+              //             Icons.light_mode,
+              //             size: DimensionManager.icon24,
+              //           ))),
               IconButton(
                   onPressed: () {
                     Get.to(() => SearchScreen());
@@ -53,6 +62,7 @@ class HomeScreen extends StatelessWidget {
               // )
             ],
           ),
+          drawer: AppDrawer(),
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

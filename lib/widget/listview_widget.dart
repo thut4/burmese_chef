@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../constant/app_color.dart';
 import '../constant/diemsion_manager.dart';
 import '../controller/home_controller.dart';
-import '../screen/detail_screen.dart';
+import '../screen/home/detail_screen.dart';
 import 'text_widget.dart';
 
 buildListView(HomeController controller, BuildContext context) {

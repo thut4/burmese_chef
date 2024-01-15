@@ -1,12 +1,12 @@
 import 'package:burmese_meal/constant/diemsion_manager.dart';
 import 'package:burmese_meal/controller/home_controller.dart';
-import 'package:burmese_meal/screen/detail_screen.dart';
+import 'package:burmese_meal/screen/home/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-import '../constant/app_color.dart';
-import '../widget/text_widget.dart';
+import '../../constant/app_color.dart';
+import '../../widget/text_widget.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
